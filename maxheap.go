@@ -40,9 +40,13 @@ func (h *heap) heapifyTtoB() {
 	for lchild(index) <= len(h.arr)-1 {
 		lc := lchild(index)
 		rc := rchild(index)
-		if rc > len(h.arr)-1 && h.arr[lc] > h.arr[index] {
+		if rc > len(h.arr)-1{
+			if h.arr[lc] > h.arr[index] {
 			h.swap(lc, index)
 			index = lchild(index)
+			}else{
+				return
+			}
 		} else if h.arr[lc] > h.arr[rc] && h.arr[index] < h.arr[lc] {
 			h.swap(lc, index)
 			index = lchild(index)
